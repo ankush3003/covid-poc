@@ -14,5 +14,70 @@
         android:layout_height="match_parent"
         android:paddingTop="?attr/actionBarSize">
 
+        <TextView
+            android:id="@+id/gpsHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="GPS Data (will update every 5 seconds)"
+            android:textSize="18sp"
+            android:layout_margin="8dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gpsHeading"
+            android:layout_margin="16dp"
+            android:background="@color/colorLiteBg"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/lat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                preText="@{`Lat:`}"
+                valTextDouble="@{viewmodel.locationResultLiveData.latitude}" />
+
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lat"
+                preText="@{`Long:`}"
+                valTextDouble="@{viewmodel.locationResultLiveData.longitude}"/>
+
+            <TextView
+                android:id="@+id/accuracy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/longitude"
+                preText="@{`Accuracy:`}"
+                valTextFloat="@{viewmodel.locationResultLiveData.accuracy}"/>
+
+            <TextView
+                android:id="@+id/altitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/accuracy"
+                preText="@{`Altitude:`}"
+                valTextDouble="@{viewmodel.locationResultLiveData.altitude}"/>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/altitude"
+                formatDateTime="@{viewmodel.locationResultLiveData.time}" />
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/btnFetchLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Location"
+            android:layout_margin="32dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="@{() -> viewmodel.onFetchLocationBtnClicked()}"/>
     </RelativeLayout>
 </layout>
