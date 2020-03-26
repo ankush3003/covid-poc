@@ -11,8 +11,7 @@
 
     <RelativeLayout android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/gpsHeading"
@@ -24,6 +23,7 @@
             android:layout_margin="8dp"/>
 
         <RelativeLayout
+            android:id="@+id/gpsDataContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/gpsHeading"
@@ -71,13 +71,41 @@
         </RelativeLayout>
 
 
+        <TextView
+            android:id="@+id/btHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Bluetooth Data"
+            android:textSize="18sp"
+            android:layout_margin="8dp"
+            android:layout_below="@id/gpsDataContainer"/>
+
+        <RelativeLayout
+            android:id="@+id/btDataContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btHeading"
+            android:layout_margin="16dp"
+            android:background="@color/colorLiteBg"
+            android:padding="8dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
         <Button
             android:id="@+id/btnFetchLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get Location"
+            android:text="Get Live Location"
             android:layout_margin="32dp"
             android:layout_alignParentBottom="true"
-            android:onClick="@{() -> viewmodel.onFetchLocationBtnClicked()}"/>
+            android:onClick="@{() -> viewmodel.onFetchLocationBtnClicked()}"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#ffffff"
+            android:textStyle="bold"/>
     </RelativeLayout>
 </layout>
